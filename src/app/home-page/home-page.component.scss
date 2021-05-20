@@ -1,0 +1,64 @@
+p {
+    font-family: "myBodyFont";
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: "Caligraphy";
+    font-size: 50px;
+}
+
+.grid-container {
+    display: grid;
+    // grid-template-columns: auto auto auto;
+    grid-template-columns: 33% 33% 33%;
+    // background-color: #2196F3;
+    padding: 10px;
+}
+
+.grid-item {
+    // background-color: rgba(255, 255, 255, 0.8);
+    // border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.grid-button {
+    width: 100%;
+    border: none;
+    height: 200px;
+    border-radius: 25px;
+    cursor: pointer;
+    outline: none;
+    background-color: #efefef;
+}
+
+.grid-button:hover {
+    background-color: #B1B1B1;
+}
+
+.yearlyLabelTextContainer {
+    margin-left: 58px;
+}
+
+.yearlyLabelTextContainer {
+    background-image: url(/assets/highlighterStroke.png);
+    background-repeat: no-repeat;
+    width: 32%;
+}
+
+.monthlyLabelTextContainer {
+    margin-left: 58px;
+}
+
+.monthlyLabelTextContainer {
+    background-image: url(/assets/highlighterStroke.png);
+    background-repeat: no-repeat;
+    width: 40%;
+}
+
+.textContainer {
+    margin-left: -35px;
+}

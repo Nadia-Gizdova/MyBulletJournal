@@ -1,6 +1,10 @@
-<h1>{{title}}</h1>
-<p>Hi there! My name is Nadia :)</p>
-<!-- <div [ngStyle]="{backgroundImage:'url(/assets/myGrid.png)'}"></div> -->
+<div class = "header">
+  <div class = "title-container">
+    <button class = "title-button" routerLink = "/home-page">
+      <h1 id = "title-text">{{title}}</h1>
+    </button>
+  </div>
+</div>
 <!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
 <!-- The routed views render in the <router-outlet>-->
 <router-outlet></router-outlet>

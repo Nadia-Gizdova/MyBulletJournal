@@ -3,12 +3,30 @@ html {
   height: 100%;
 }
 
-h1 {
+h1#title-text{
   font-family: "h1Bold";
-  font-size: 80px;
+  font-size: 5vw;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 10px;
 }
 
-p {
-  font-family: "myBodyFont";
-  font-size: 40px;
+// h1 {
+//   font-family: "Caligraphy";
+//   font-size: 80px;
+// }
+
+
+.header {
+  display: flex;
+  flex-direction: row;
+  // background-color: #D9D7D7;
+  background-color: #A9DBF1;
+}
+
+.title-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
 }

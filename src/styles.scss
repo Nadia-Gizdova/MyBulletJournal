@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-    font-family: "Shalma";
-    src: url(assets/fonts/Shalma-Rp0Pe.otf) format("truetype");
+    font-family: "Caligraphy";
+    src: url(assets/fonts/autumn-in-november.regular.ttf) format("truetype");
 }
 
 @font-face {
@@ -24,8 +24,11 @@
 html {
     background-image: url(/assets/myGrid.png);
     height: 100%;
-    background-position:center;
+    // background-position:center;
     background-repeat:repeat;
     background-size:cover;
 }
 
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

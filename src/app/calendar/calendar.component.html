@@ -1,0 +1,29 @@
+<div class = "month-container">
+    <div class = "month-changer">
+        <button mat-button class = "previous-month" (click)="decreaseMonth()"><mat-icon id = "previous">chevron_left</mat-icon></button>
+        <div class = "month-label">{{displayMonth}}</div>
+        <button mat-button class = "next-month" (click)="increaseMonth()"><mat-icon id = "next">chevron_right</mat-icon></button>
+    </div>
+    <button mat-button class = "today" (click)="setCurrentMonth()"><mat-icon>calendar_today</mat-icon>Today</button>
+</div>
+  
+  <table class='calendar-table' *ngIf="calendar">
+    <thead>
+      <tr>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of calendar | chunk: 7; let i = index">
+        <td class="calendar-day" [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday}" *ngFor="let c of row; let j = index">
+          <div class="calendar-day-header" [ngClass]="{'blue-date': c.isToday}"><strong>{{c.date.getDate()}}</strong> <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> {{monthNames[c.date.getMonth()]}}</strong></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
