@@ -6,14 +6,13 @@ p {
 
 h2 {
     font-family: "Caligraphy";
-    font-size: 50px;
+    font-size: 2vw;
 }
 
 .grid-container {
     display: grid;
-    // grid-template-columns: auto auto auto;
-    grid-template-columns: 33% 33% 33%;
-    // background-color: #2196F3;
+    // justify-items: center;
+    grid-template-columns: 33.3% 33.3% 33.3%;
     padding: 10px;
 }
 
@@ -23,25 +22,38 @@ h2 {
     padding: 20px;
     font-size: 30px;
     text-align: center;
+    text-align: -webkit-center;
 }
 
 .grid-button {
-    width: 100%;
+    width: 90%;
     border: none;
-    height: 200px;
+    height: 100px;
+    padding: 25px;
+    padding-top: 35px;
     border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    // align-self: center;
     cursor: pointer;
     outline: none;
-    background-color: #efefef;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
+
+
 
 .grid-button:hover {
     background-color: #B1B1B1;
 }
 
-.yearlyLabelTextContainer {
-    margin-left: 58px;
+.yearlyLabelContainer {
+    text-align: -webkit-center;
 }
+
 
 .yearlyLabelTextContainer {
     background-image: url(/assets/highlighterStroke.png);
@@ -49,16 +61,79 @@ h2 {
     width: 32%;
 }
 
-.monthlyLabelTextContainer {
-    margin-left: 58px;
+.yearlyLabel {
+    line-height: 40px;
+    padding-top: 30px;
 }
 
+.monthlyLabelContainer {
+    text-align: -webkit-center;
+}
+
+
 .monthlyLabelTextContainer {
-    background-image: url(/assets/highlighterStroke.png);
+    background-image: url(/assets/highlighterStrokeFlipped.png);
     background-repeat: no-repeat;
     width: 40%;
+}
+
+.monthlyLabel {
+    line-height: 40px;
+    padding-top: 30px;
 }
 
 .textContainer {
     margin-left: -35px;
 }
+
+.mat-icon {
+    font-size: 60px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
+
+#shows-icon.mat-icon {
+    margin-right: 12px;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+
+
+
+
+
+// .movieIcon {
+//     width: 60px;
+//     margin-right: 8px;
+// }
+
+// .showIcon {
+//     width: 60px;
+//     margin-right: 8px;
+// }
+
+// .bookIcon {
+//     width: 60px;
+//     margin-right: 8px;
+// }
+
+// .goalIcon {
+//     width: 60px;
+//     margin-right: 8px;
+// }
+
+// .calendarIcon {
+//     width: 60px;
+//     margin-right: 8px;
+// }
+
+// .eventsIcon {
+//     width: 60px;
+//     margin-right: 8px;
+// }
+
+// .pixelIcon {
+//     width: 60px;
+//     margin-right: 8px;
+// }

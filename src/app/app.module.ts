@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
 import { YearlyGoalsComponent } from './yearly-goals/yearly-goals.component';
+import { EventsComponent } from './events/events.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { YearlyGoalsComponent } from './yearly-goals/yearly-goals.component';
     HomePageComponent,
     CalendarComponent,
     ChunkPipe,
-    YearlyGoalsComponent
+    YearlyGoalsComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,

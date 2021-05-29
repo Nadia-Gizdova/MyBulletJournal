@@ -1,1 +1,37 @@
-<p>yearly-goals works!</p>
+<!-- <div class = "yearlyGoalsLabelContainer"> -->
+<div class = "grid-container">
+    <div class= "grid-item" id = "empty-container"></div>
+    <div class= "grid-item">
+        <div class = "yearlyGoalsLabelTextContainer">
+            <h2 class = "yearlyGoalsLabel">Yearly Goals</h2>
+        </div>
+    </div>
+    <div class= "grid-item" id = "empty-container2"></div>
+</div>
+<div class = "first-line">
+    <!-- <div class = "icon-container">
+        <mat-icon>fiber_manual_record</mat-icon>
+    </div> -->
+    <p class = "my-goals-are">my goals for the year are...</p>
+</div>
+<div class = "saved-goals">
+    <ul id = "saved-goals-list"></ul>
+</div>
+<div class = "goals-container">
+    <section id="textarea" contenteditable="true">
+        <ul id = "goals-list">
+            <li></li>
+        </ul>
+    </section>
+    <div class = "save-goal-button-div">
+        <button class = "save-goal-button">
+            <!-- <div class = "icon-container">
+                <mat-icon>add</mat-icon>
+            </div> -->
+            <div class = "button-text-container">
+                <p class = "save-goal-button-text" (click) = "saveGoal()">Save Goal</p>
+            </div>
+        </button>
+    </div>
+    <!-- <textarea class = "goal-textbox"></textarea> -->
+</div>
