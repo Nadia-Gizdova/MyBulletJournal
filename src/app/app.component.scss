@@ -24,6 +24,11 @@ h1#title-text{
   background-color: #A9DBF1;
 }
 
+.title-container {
+  display: flex;
+  flex: 8;
+}
+
 .title-button {
   background: none;
   border: none;
@@ -33,4 +38,36 @@ h1#title-text{
 
 .title-button:hover {
   background-color: #52c4f5;
+}
+
+.my-account-container {
+  display: flex;
+}
+
+.my-account {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  padding-right: 25px;
+  padding-left: 25px;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.my-account:hover {
+  background-color: #52c4f5;
+}
+
+.account {
+  font-size: 50px;
+  margin-right: 40px;
+  align-self: center;
+  margin-bottom: 30px;
+}
+
+.logOutText {
+  align-self: center;
+  font-family: "h1Bold";
+  font-size: 2vw;
 }

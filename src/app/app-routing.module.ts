@@ -3,17 +3,28 @@ import { Routes, RouterModule } from '@angular/router';
 import { EventsComponent } from './events/events.component';
 
 import { HomePageComponent } from './home-page/home-page.component'
+import { LogInPageComponent } from './account-management/log-in-page/log-in-page.component';
 import { YearlyGoalsComponent } from './yearly-goals/yearly-goals.component';
+import { CreateAccountComponent } from './account-management/create-account/create-account.component';
 
 const routes: Routes = [
-  // { path: 'home-page', component: HomePageComponent}
   { 
     path: '',
     children: [
       {
         path: '', 
-        redirectTo: '/home-page',
+        redirectTo: '/log-in',
         pathMatch: 'full'
+      },
+      {
+        path: 'log-in',
+        component: LogInPageComponent,
+        data: { title: 'Log In'}
+      },
+      {
+        path: 'create-account',
+        component: CreateAccountComponent,
+        data: { title: 'Create Account'}
       },
       {
         path: 'home-page',

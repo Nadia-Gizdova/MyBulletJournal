@@ -66,6 +66,7 @@ export class CalendarComponent implements OnInit {
 
     // we set the date 
     let day: Date = new Date(new Date().setMonth(new Date().getMonth() + monthIndex));
+    console.log(day);
 
     // set the dispaly month for UI
     this.displayMonth = this.monthNames[day.getMonth()];
@@ -101,16 +102,22 @@ export class CalendarComponent implements OnInit {
    public increaseMonth() {
     this.monthIndex++;
     this.generateCalendarDays(this.monthIndex);
+    console.log(this.monthIndex);
+    console.log(this.displayMonth);
   }
 
   public decreaseMonth() {
-    this.monthIndex--
+    this.monthIndex--;
     this.generateCalendarDays(this.monthIndex);
+    console.log(this.monthIndex);
+    console.log(this.displayMonth);
   }
 
   public setCurrentMonth() {
     this.monthIndex = 0;
     this.generateCalendarDays(this.monthIndex);
+    console.log(this.monthIndex);
+    console.log(this.displayMonth);
   }
 
 }

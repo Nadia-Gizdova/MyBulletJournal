@@ -1,0 +1,105 @@
+//general
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.labelContainer {
+    font-family: 'h1Bold';
+    font-weight: bold;
+    font-size: 30px;
+}
+
+//input fields
+.textarea { 
+    padding: 10px;
+    // font-size: 25px;
+    border: none;
+    background-color: white;
+    border-radius: 20px;
+    // font-family: "myBodyFont";
+    width: 100%;
+    outline: none;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+//------------------------------------------------------
+
+//create account title
+
+.createAccountTextContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.createAccountTextContainer p{
+    text-align: center;
+    font-family: "h1Bold";
+    font-weight: bold;
+    font-size: 60px;
+    background-image: url(/assets/highlighterStroke.png);
+    background-repeat: no-repeat;
+    width: 20%;
+}
+
+//user info container
+
+.userInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+
+//password
+
+.passwordInput {
+    padding: 10px;
+    // font-size: 25px;
+    border: none;
+    background-color: white;
+    border-radius: 20px;
+    // font-family: "myBodyFont";
+    width: 100%;
+    outline: none;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+//create account button
+
+.button-container{
+    display: flex;
+    justify-content: center;
+}
+
+.createAccountButton {
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    outline: none;
+    background-color: white;
+    align-self: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.createButtonTextContainer {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    padding: 25px;
+}
+
+.button-text {
+    font-family: "h1Bold";
+    font-size: 2vw;
+}
+
+.createAccountButton:hover {
+    background-color: #B1B1B1;
+}

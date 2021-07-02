@@ -1,0 +1,55 @@
+p {
+    font-family: "myBodyFont";
+    font-size: 2vw;
+    // font-weight: bold;
+}
+
+h2 {
+    font-family: "Caligraphy";
+    font-size: 3vw;
+}
+
+
+li {
+    font-size: 1.5vw;
+}
+
+.grid-container {
+    display: grid;
+    margin-right: 4%;
+    margin-left: 4%;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    // background-color: #2196F3;
+    padding: 10px;
+}
+
+.grid-item {
+    padding: 20px;
+    font-size: 30px;
+    // text-align: center;
+}
+
+#empty-container.grid-item {
+    background-image: url(/assets/highlighterStroke.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 1%;
+    margin-top: 13%;
+}
+
+#empty-container2.grid-item {
+    background-image: url(/assets/highlighterStrokeFlipped.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    height: 1%;
+    margin-top: 13%;
+}
+
+.eventsLabelContainer {
+    display: flex;
+}
+
+
+.eventsLabelTextContainer {
+    text-align: center;
+}

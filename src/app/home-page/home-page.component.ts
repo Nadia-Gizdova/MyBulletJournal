@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ModalService } from '../modal';
+
 @Component({
   selector: 'home-page',
   templateUrl: './home-page.component.html',
