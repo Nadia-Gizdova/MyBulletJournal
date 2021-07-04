@@ -1,44 +1,55 @@
 <div class = "createAccountTextContainer">
     <p class = "createAccountText">Create Account</p>
 </div>
+<p *ngIf = "errorMessage.length > 0">{{errorMessage}}</p>
+<p *ngIf = "error.message.length > 0">{{error.message}}</p>
+<p *ngIf = "message.length >0">{{message}}</p>
 <div class = "userInfoContainer">
     <div id = "firstNameContainer" class = "container">
         <div id = "firstNameLabelContainer" class = "labelContainer">
             <p>First Name:</p>
         </div>
-        <input class = "textarea">
+        <input name = "firstName" [(ngModel)] ="firstName" class = "textarea" required>
     </div>
     <div id = "lastNameContainer" class = "container">
         <div id = "lastNameLabelContainer" class = "labelContainer">
             <p>Last Name:</p>
         </div>
-        <input class = "textarea">
+        <input name = "lastName" [(ngModel)] ="lastName" class = "textarea" required>
     </div>
     <div id = "emailContainer" class = "container">
         <div id = "emailLabelContainer" class = "labelContainer">
             <p>Email:</p>
         </div>
-        <input class = "textarea">
+        <input name = "email" [(ngModel)] ="email" class = "textarea" required>
     </div>
     <div id = "userNameContainer" class = "container">
         <div id = "userNameLabelContainer" class = "labelContainer">
             <p>Username:</p>
         </div>
-        <input class = "textarea">
+        <input name = "username" [(ngModel)] ="username" class = "textarea" required>
     </div>
     <div id = "pswdContainer" class = "container">
         <div id = "pswdLabelContainer" class = "labelContainer">
             <p>Password:</p>
         </div>
-        <input class = "textarea" type = "password">
+        <input name = "password" [(ngModel)] ="password" class = "textarea" type = "password" required>
     </div>
 </div>
 <div class = "button-container">
-    <button class = "createAccountButton"  routerLink ="../home-page" routerLinkActive="active">
+    <button class = "createAccountButton" (click) = "register()" routerLinkActive="active">
         <div class = "createButtonTextContainer">
             <p class = "button-text">Create Account</p>
         </div>
     </button>
+</div>
+<div class = "backToContainer">
+    <div class = "textContainer">
+        <p class = "haveAccountText">Already have an account?</p>
+    </div>
+    <div class = "haveAccountButtonContainer">
+        <button class = "backToButton" routerLink ="../log-in">Back to Log In</button>
+    </div>
 </div>
 
 

@@ -6,6 +6,7 @@ import { HomePageComponent } from './home-page/home-page.component'
 import { LogInPageComponent } from './account-management/log-in-page/log-in-page.component';
 import { YearlyGoalsComponent } from './yearly-goals/yearly-goals.component';
 import { CreateAccountComponent } from './account-management/create-account/create-account.component';
+import { UserProfileComponent } from './account-management/user-profile/user-profile.component';
 
 const routes: Routes = [
   { 
@@ -25,6 +26,11 @@ const routes: Routes = [
         path: 'create-account',
         component: CreateAccountComponent,
         data: { title: 'Create Account'}
+      },
+      {
+        path: 'my-account',
+        component: UserProfileComponent,
+        data: { title: 'My Account'}
       },
       {
         path: 'home-page',

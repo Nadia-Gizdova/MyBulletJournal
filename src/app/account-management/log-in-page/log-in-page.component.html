@@ -1,23 +1,26 @@
 <div class = "logInTextContainer">
     <p class = "logInText">Log In</p>
 </div>
-<div class = "usernameAndPswdContainer">
-    <div class = "userNameContainer">
-        <div class = "userNameLabelContainer">
-            <p>Username:</p>
+<p *ngIf = "errorMessage.length > 0">{{errorMessage}}</p>
+<p *ngIf = "error.message.length > 0">{{error.message}}</p>
+<p *ngIf = "message.length >0">{{message}}</p>
+<div class = "emailAndPswdContainer">
+    <div class = "emailContainer">
+        <div class = "emailLabelContainer">
+            <p>Email:</p>
         </div>
         <!-- <textarea class = "userNameTextArea"></textarea> -->
-        <input class = "username-textarea">
+        <input class = "email-textarea" name = "email" [(ngModel)] ="email">
     </div>
     <div class = "pswdContainer">
         <div class = "pswdLabelContainer">
             <p>Password:</p>
         </div>
-        <input class = "passwordInput" type = "password">
+        <input class = "passwordInput" name = "password" [(ngModel)] = "password" type = "password">
     </div>
 </div>
 <div class = "button-container">
-    <button class = "login-button"  routerLink ="../home-page" routerLinkActive="active">
+    <button class = "login-button"  (click) = "logIn()" routerLinkActive="active">
         <div class = "login-button-text-container">
             <p class = "button-text">Log In</p>
         </div>

@@ -18,6 +18,14 @@ import { ModalModule } from './modal';
 import { LogInPageComponent } from './account-management/log-in-page/log-in-page.component';
 import { CreateAccountComponent } from './account-management/create-account/create-account.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { HeaderBarComponent } from './header-bar/header-bar.component';
+import { FormsModule } from '@angular/forms';
+import { UserProfileComponent } from './account-management/user-profile/user-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +38,8 @@ import { CreateAccountComponent } from './account-management/create-account/crea
     PlainCalendarComponent,
     LogInPageComponent,
     CreateAccountComponent,
+    HeaderBarComponent,
+    UserProfileComponent,
     // ModalComponent
   ],
   imports: [
@@ -39,7 +49,12 @@ import { CreateAccountComponent } from './account-management/create-account/crea
     MatButtonModule,
     MatSliderModule,
     MatIconModule,
-    ModalModule
+    ModalModule,
+    FormsModule,
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

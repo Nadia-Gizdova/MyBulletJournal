@@ -103,3 +103,28 @@
 .createAccountButton:hover {
     background-color: #B1B1B1;
 }
+
+//back to
+
+.backToContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.haveAccountText {
+    font-family: "h1Bold";
+    font-size: 25px;
+}
+
+.backToButton {
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: blue;
+}
+
+.backToButton:hover {
+    text-decoration: underline;
+}

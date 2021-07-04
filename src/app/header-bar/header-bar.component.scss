@@ -1,0 +1,68 @@
+h1#title-text{
+    font-family: "h1Bold";
+    font-size: 5vw;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+  }
+  
+  // h1 {
+  //   font-family: "Caligraphy";
+  //   font-size: 80px;
+  // }
+  
+  
+  .header {
+    display: flex;
+    flex-direction: row;
+    // background-color: #D9D7D7;
+    background-color: #A9DBF1;
+  }
+  
+  .title-container {
+    display: flex;
+    flex: 8;
+  }
+  
+  .title-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .title-button:hover {
+    background-color: #52c4f5;
+  }
+  
+  .my-account-container {
+    display: flex;
+  }
+  
+  .my-account {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    padding-right: 25px;
+    padding-left: 25px;
+    outline: none;
+    border: none;
+    background: none;
+  }
+  
+  .my-account:hover {
+    background-color: #52c4f5;
+  }
+  
+  .account {
+    font-size: 50px;
+    margin-right: 40px;
+    align-self: center;
+    margin-bottom: 30px;
+  }
+  
+  .logOutText {
+    align-self: center;
+    font-family: "h1Bold";
+    font-size: 2vw;
+  }

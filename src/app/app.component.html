@@ -1,16 +1,17 @@
-<div class = "header">
+<!-- <div class = "header">
   <div class = "title-container">
     <button class = "title-button" routerLink = "/home-page">
       <h1 id = "title-text">{{title}}</h1>
     </button>
   </div>
   <div class = "my-account-container">
-    <button class = "my-account">
+    <button class = "my-account" (click)>
       <mat-icon class = "account">account_circle</mat-icon>
       <p class = "logOutText">Log Out</p>
     </button>
   </div>
-</div>
+</div> -->
+<app-header-bar></app-header-bar>
 <!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
 <!-- The routed views render in the <router-outlet>-->
 <router-outlet></router-outlet>
