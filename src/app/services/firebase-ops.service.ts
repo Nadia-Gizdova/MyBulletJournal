@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 
 export interface User {
@@ -17,10 +17,27 @@ export interface User {
 
 export class FirebaseOpsService {
 
-  constructor(private afd: AngularFireDatabase, ) { }
+  currentUserDetails;
+
+  usersRef: AngularFireList<User> = null;
+  usersList;
+
+  constructor(private afd: AngularFireDatabase) {
+    this.usersRef
+   }
 
   getUsers(): Observable<any> {
-    return this.afd.list<User>('users').valueChanges();
+    return this.afd.list<User>('/users').valueChanges();
+  }
+
+  // getUserDetails(email) {
+  //   var userDetails = this.afd.list('/users', users => users.orderByChild('email').equalTo(email));
+  //   return userDetails;
+  // }
+
+  getUsersList() : AngularFireList<User> {
+    this.usersRef = this.afd.list('/users') as AngularFireList<User>
+    return this.usersRef;
   }
 
 

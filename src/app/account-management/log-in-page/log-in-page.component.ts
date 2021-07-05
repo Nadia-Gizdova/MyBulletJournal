@@ -23,6 +23,7 @@ export class LogInPageComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private fbOps: FirebaseOpsService) { }
 
   ngOnInit(): void {
+    
   }
 
   logIn() {
@@ -30,7 +31,7 @@ export class LogInPageComponent implements OnInit {
     if(this.validateLogin(this.email, this.password)) {
       this.authService.loginWithEmail(this.email, this.password)
       .then(() => {
-        this.message = "you have succesfully logged in! Welcom to your home page";
+        // this.message = "you have succesfully logged in! Welcome to your home page";
         this.router.navigate(['/home-page']);
       }).catch(_error => {
         console.log("You have failed to Log In. Please try again");

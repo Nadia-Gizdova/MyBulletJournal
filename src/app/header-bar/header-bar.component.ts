@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
 })
 export class HeaderBarComponent implements OnInit {
 
-  isLoggedIn = false;
+  // @Input() isUserLoggedIn: boolean;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getSignInState();
+    // this.getSignInState();
   }
 
 
@@ -24,9 +24,12 @@ export class HeaderBarComponent implements OnInit {
     console.log("You've been logged out");
   }
 
-  getSignInState() {
-    console.log("Checking sign-in state")
-    this.isLoggedIn = this.authService.isUserEmailLoggedIn
-  }
+  // getSignInState() {
+  //   console.log("Checking sign-in state")
+  //   // console.log("ID:");
+  //   // console.log(this.authService.currentUserId);
+  //   this.isUserLoggedIn = this.authService.isUserEmailLoggedIn
+  //   console.log("Is logged in?: " + this.isUserLoggedIn);
+  // }
 
 }

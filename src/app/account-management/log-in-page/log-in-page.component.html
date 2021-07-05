@@ -1,9 +1,11 @@
 <div class = "logInTextContainer">
     <p class = "logInText">Log In</p>
 </div>
-<p *ngIf = "errorMessage.length > 0">{{errorMessage}}</p>
-<p *ngIf = "error.message.length > 0">{{error.message}}</p>
-<p *ngIf = "message.length >0">{{message}}</p>
+<div class = "errorMessagesContainer">
+    <p class = "errorMessageText" *ngIf = "errorMessage.length > 0">{{errorMessage}}</p>
+    <p class = "error.message.Text" *ngIf = "error.message.length > 0">{{error.message}}</p>
+    <p class = "messageText" *ngIf = "message.length >0">{{message}}</p>
+</div>
 <div class = "emailAndPswdContainer">
     <div class = "emailContainer">
         <div class = "emailLabelContainer">

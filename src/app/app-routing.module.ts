@@ -8,6 +8,12 @@ import { YearlyGoalsComponent } from './yearly-goals/yearly-goals.component';
 import { CreateAccountComponent } from './account-management/create-account/create-account.component';
 import { UserProfileComponent } from './account-management/user-profile/user-profile.component';
 
+import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['log-in']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home-page']);
+const redirectUnauthorizedToCreateAccount = () => redirectLoggedInTo(['create-account']);
+
 const routes: Routes = [
   { 
     path: '',
@@ -15,36 +21,44 @@ const routes: Routes = [
       {
         path: '', 
         redirectTo: '/log-in',
+        canActivate: [AngularFireAuthGuard], 
+        data: { authGuardPipe: redirectLoggedInToHome },
         pathMatch: 'full'
       },
       {
         path: 'log-in',
         component: LogInPageComponent,
-        data: { title: 'Log In'}
+        canActivate: [AngularFireAuthGuard],
+        data: { authGuardPipe: redirectLoggedInToHome, title: 'Log In'}
       },
       {
         path: 'create-account',
         component: CreateAccountComponent,
-        data: { title: 'Create Account'}
+        canActivate: [AngularFireAuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToCreateAccount, title: 'Create Account'}
       },
       {
         path: 'my-account',
         component: UserProfileComponent,
+        canActivate: [AngularFireAuthGuard],
         data: { title: 'My Account'}
       },
       {
         path: 'home-page',
         component: HomePageComponent,
-        data: { title: 'My Bullet Journal'}
+        canActivate: [AngularFireAuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'My Bullet Journal'}
       },
       {
         path: 'events', 
         component: EventsComponent,
+        canActivate: [AngularFireAuthGuard],
         data: {title: 'My Events'}
       },
       {
         path: 'yearly-goals', 
         component: YearlyGoalsComponent,
+        canActivate: [AngularFireAuthGuard],
         data: {title: 'My Yearly Goals'}
       }
     ]

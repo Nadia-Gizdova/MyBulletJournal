@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { FirebaseOpsService } from '../services/firebase-ops.service';
 
 import { ModalService } from '../modal';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'home-page',
@@ -9,9 +12,26 @@ import { ModalService } from '../modal';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  userID = '';
+  firstName = '';
+  lastName = '';
+  email = '';
+
+  constructor(private authService: AuthService, private firebaseOpsService: FirebaseOpsService, private afAuth: AngularFireAuth) { }
+
+
 
   ngOnInit(): void {
+    this.afAuth.authState.subscribe( user => {
+      if (user) { 
+        console.log("We have a user")
+        this.userID = user.uid;
+        console.log("MY USER ID: " + this.userID);
+        this.email = user.email;
+        console.log("MY EMAIL: " + this.email);
+        
+      }
+    });
   }
 
 }

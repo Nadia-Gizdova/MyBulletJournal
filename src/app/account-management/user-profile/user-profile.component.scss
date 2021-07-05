@@ -37,6 +37,27 @@ p {
     width: 20%;
 }
 
+//edit account
+
+.editAccountButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
+}
+
+.editAccountButton {
+    cursor: pointer;
+    font-family: "h1Bold";
+    font-size: 20px;
+    border: none;
+    background: none;
+    color: blue;
+}
+
+.editAccountButton:hover {
+    text-decoration: underline;
+}
+
 //user info container
 
 .userInfoContainer {
@@ -44,6 +65,7 @@ p {
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
+    margin-left: 230px;
 }
 
 

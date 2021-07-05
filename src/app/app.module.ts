@@ -22,6 +22,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard'; 
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { FormsModule } from '@angular/forms';
 import { UserProfileComponent } from './account-management/user-profile/user-profile.component';
@@ -55,6 +56,7 @@ import { UserProfileComponent } from './account-management/user-profile/user-pro
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    AngularFireAuthGuardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

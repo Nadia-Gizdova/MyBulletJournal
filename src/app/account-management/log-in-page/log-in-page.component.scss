@@ -1,6 +1,26 @@
 //log-in
 
+.errorMessagesContainer {
+    // background-color: white;
+    display: flex;
+    justify-content: center;
+}
 
+.errorMessagesContainer p {
+    text-align: center;
+    font-family: "h1Bold";
+    font-weight: bold;
+    color: red;
+    font-size: 30px;
+}
+
+// .errorMessageText, .error.message.Text, .messageText {
+//     text-align: center;
+//     font-family: "h1Bold";
+//     font-weight: bold;
+//     color: red;
+//     font-size: 20px;
+// }
 
 .logInTextContainer {
     display: flex;
