@@ -20,6 +20,12 @@
         </div>
         <input class = "passwordInput" name = "password" [(ngModel)] = "password" type = "password">
     </div>
+    <div class = "resetPasswordContainer">
+        <button class = "resetButton" (click) = "resetPasswordFromLogin()">Reset Password</button>
+    </div>
+    <div class = "resetPasswordErrorTextContainer">
+        <p id = resetPasswordErrorText></p>
+    </div>
 </div>
 <div class = "button-container">
     <button class = "login-button"  (click) = "logIn()" routerLinkActive="active">

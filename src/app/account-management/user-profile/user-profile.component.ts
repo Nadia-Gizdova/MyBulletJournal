@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { FirebaseOpsService, User } from 'src/app/services/firebase-ops.service';
-import { AuthService } from '../../services/auth.service'
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,14 +12,14 @@ import { AuthService } from '../../services/auth.service'
 export class UserProfileComponent implements OnInit {
 
   allUsers: User[] = [];
-  currentUser: User;
-
 
   userID = '';
   firstName = '';
   lastName = '';
   email = '';
   userName = "";
+
+  isEditable: boolean = false; 
 
   constructor(private authService: AuthService, private afd: AngularFireDatabase, private afAuth: AngularFireAuth, private fbOps: FirebaseOpsService) { 
   }
@@ -61,6 +61,16 @@ export class UserProfileComponent implements OnInit {
       }
     });
   }
+
+  editAccount() {
+    this.isEditable = !this.isEditable;
+    if(this.isEditable){
+      (<HTMLElement>document.getElementById("edit-button")).textContent = "Save Changes";
+    } else {
+      (<HTMLElement>document.getElementById("edit-button")).textContent = "Edit Account";
+    }
+  }
+
 
 
   logOut() {

@@ -2,27 +2,69 @@
     <p class = "myAccountText">My Account</p>
 </div>
 <div class = "editAccountButtonContainer">
-    <button class = "editAccountButton">Edit Account</button>
+    <button class = "editAccountButton" id = "edit-button" (click) = "editAccount()">Edit Account</button>
+</div>
+<div *ngIf = "isEditable" class = "resetPasswordButtonContainer">
+    <button class = "resetPasswordButton" id = "reset-pswd-button">Reset Password</button>
 </div>
 <div class = "userInfoContainer">
     <div id = "firstNameContainer" class = "container">
-        <div id = "firstNameLabelContainer" class = "labelContainer">
-            <p>First Name: {{firstName}}</p>
+        <div *ngIf = "isEditable">
+            <div id = "firstNameLabelContainer" class = "labelContainer">
+                <p class = 'label'>First Name: </p>
+                <div class = "inputContainer">
+                    <input class = 'inputValue'[(ngModel)] = "firstName">
+                </div>
+            </div>
+        </div>
+        <div *ngIf = "!isEditable">
+            <div id = "firstNameLabelContainer" class = "labelContainer">
+                <p class = 'label'>First Name: </p>
+                <p class = 'value'>{{firstName}}</p>
+            </div>
         </div>
     </div>
+
     <div id = "lastNameContainer" class = "container">
-        <div id = "lastNameLabelContainer" class = "labelContainer">
-            <p>Last Name: {{lastName}}</p>
+        <div *ngIf = "isEditable">
+            <div id = "lastNameLabelContainer" class = "labelContainer">
+                <p class = 'label'>Last Name: </p>
+                <div class = "inputContainer">
+                    <input class = 'inputValue'[(ngModel)] = "lastName">
+                </div>
+            </div>
+        </div>
+        <div *ngIf = "!isEditable">
+            <div id = "lastNameLabelContainer" class = "labelContainer">
+                <p class = 'label'>Last Name: </p>
+                <p class = 'value'>{{lastName}}</p>
+            </div>
         </div>
     </div>
+
+
     <div id = "emailContainer" class = "container">
         <div id = "emailContainer" class = "labelContainer">
-            <p>Email: {{email}}</p>
+            <p class = 'label'>Email: </p>
+            <p class = 'value'>{{email}}</p>
         </div>
     </div>
+
+
     <div id = "userNameContainer" class = "container">
-        <div id = "userNameContainer" class = "labelContainer">
-            <p>Username: {{userName}}</p>
+        <div *ngIf = "isEditable">
+            <div id = "userNameLabelContainer" class = "labelContainer">
+                <p class = 'label'>User Name: </p>
+                <div class = "inputContainer">
+                    <input class = 'inputValue'[(ngModel)] = "userName">
+                </div>
+            </div>
+        </div>
+        <div *ngIf = "!isEditable">
+            <div id = "userNameLabelContainer" class = "labelContainer">
+                <p class = 'label'>User Name: </p>
+                <p class = 'value'>{{userName}}</p>
+            </div>
         </div>
     </div>
 </div>

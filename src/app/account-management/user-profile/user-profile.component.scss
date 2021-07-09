@@ -10,6 +10,38 @@
     font-family: 'h1Bold';
     font-weight: bold;
     font-size: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.label {
+    margin-right: 10px;
+}
+
+.value {
+    font-family: 'myBodyFont';
+    font-size: 20px;
+    align-self: center;
+    padding-top: 5px;
+}
+
+.inputContainer {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.inputValue {
+    padding: 10px;
+    // font-size: 25px;
+    border: none;
+    background-color: white;
+    border-radius: 20px;
+    // font-family: "myBodyFont";
+    height: 20px;
+    width: 100%;
+    outline: none;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
 p {
@@ -58,6 +90,27 @@ p {
     text-decoration: underline;
 }
 
+//reset password
+
+.resetPasswordButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.resetPasswordButton {
+    cursor: pointer;
+    font-family: "h1Bold";
+    font-size: 20px;
+    border: none;
+    background: none;
+    color: blue;
+}
+
+.resetPasswordButton:hover {
+    text-decoration: underline;
+}
+
 //user info container
 
 .userInfoContainer {
@@ -67,6 +120,7 @@ p {
     margin-bottom: 50px;
     margin-left: 230px;
 }
+
 
 
 //log out button

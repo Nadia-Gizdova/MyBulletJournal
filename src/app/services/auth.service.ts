@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as firebase from 'firebase/app';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -42,6 +43,10 @@ export class AuthService {
     }
   }
 
+  getAuth() { 
+    return this.afu;
+  } 
+
 registerWithEmail(email: string, password: string) {
     return this.afu.createUserWithEmailAndPassword(email.trim(), password)
       .then((user) => {
@@ -64,6 +69,10 @@ registerWithEmail(email: string, password: string) {
         console.log(error)
         throw error
       });
+  }
+
+  resetPassword(email: string) {
+    return this.afu.sendPasswordResetEmail(email);
   }
 
   singout(): void

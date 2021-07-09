@@ -68,4 +68,16 @@ export class LogInPageComponent implements OnInit {
     return true;
   }
 
+  resetPasswordFromLogin() {
+    if (this.email.length == 0) { 
+      (<HTMLElement>document.getElementById('resetPasswordErrorText')).textContent = "Please type in your email before trying to reset your password"; 
+    } else {
+      this.authService.resetPassword(this.email) 
+      .then(
+        () => (<HTMLElement>document.getElementById('resetPasswordErrorText')).textContent = "A password reset link has been sent to your email address")
+      .catch(e => 
+        (<HTMLElement>document.getElementById('resetPasswordErrorText')).textContent = e + ". An error occurred while attempting to reset your password");  
+    }
+      }
+
 }

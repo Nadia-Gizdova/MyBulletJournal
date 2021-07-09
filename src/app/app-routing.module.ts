@@ -9,6 +9,7 @@ import { CreateAccountComponent } from './account-management/create-account/crea
 import { UserProfileComponent } from './account-management/user-profile/user-profile.component';
 
 import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { PasswordResetComponent } from './account-management/password-reset/password-reset.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['log-in']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home-page']);
@@ -42,6 +43,11 @@ const routes: Routes = [
         component: UserProfileComponent,
         canActivate: [AngularFireAuthGuard],
         data: { title: 'My Account'}
+      },
+      {
+        path: 'reset-password',
+        component: PasswordResetComponent,
+        data: { title: 'Reset Password'}
       },
       {
         path: 'home-page',
