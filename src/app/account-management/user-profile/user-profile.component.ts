@@ -68,6 +68,7 @@ export class UserProfileComponent implements OnInit {
       (<HTMLElement>document.getElementById("edit-button")).textContent = "Save Changes";
     } else {
       (<HTMLElement>document.getElementById("edit-button")).textContent = "Edit Account";
+      this.clearText()
     }
   }
 
@@ -82,6 +83,10 @@ export class UserProfileComponent implements OnInit {
   logOut() {
     console.log("LOGGING OUT")
     this.authService.singout();
+  }
+
+  clearText() {
+    (<HTMLElement>document.getElementById('pswdResetErrorText')).textContent = "";
   }
 
 }

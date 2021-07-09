@@ -111,6 +111,12 @@ p {
     text-decoration: underline;
 }
 
+p#pswdResetErrorText {
+    display: flex;
+    justify-content: center;
+    color: green;
+}
+
 //user info container
 
 .userInfoContainer {
