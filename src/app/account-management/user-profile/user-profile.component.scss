@@ -95,7 +95,8 @@ p {
 .resetPasswordButtonContainer {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-top: -30px;
 }
 
 .resetPasswordButton {
@@ -112,8 +113,9 @@ p {
 }
 
 p#pswdResetErrorText {
-    display: flex;
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
+    text-align: center;
     color: green;
 }
 

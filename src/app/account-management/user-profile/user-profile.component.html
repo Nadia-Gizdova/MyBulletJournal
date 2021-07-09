@@ -4,12 +4,10 @@
 <div class = "editAccountButtonContainer">
     <button class = "editAccountButton" id = "edit-button" (click) = "editAccount()">Edit Account</button>
 </div>
-<div *ngIf = "isEditable" class = "resetPasswordButtonContainer">
-    <button class = "resetPasswordButton" id = "reset-pswd-button" (click) = "resetPasswordFromUserProfile()">Reset Password</button>
-</div>
-<div class = "pswdResetErrorTextContainer">
+<!-- <div class = "pswdResetErrorTextContainer">
     <p id = "pswdResetErrorText"></p>
-</div>
+</div> -->
+<p id = "pswdResetErrorText"></p>
 <div class = "userInfoContainer">
     <div id = "firstNameContainer" class = "container">
         <div *ngIf = "isEditable">
@@ -70,6 +68,9 @@
             </div>
         </div>
     </div>
+</div>
+<div *ngIf = "isEditable" class = "resetPasswordButtonContainer">
+    <button class = "resetPasswordButton" id = "reset-pswd-button" (click) = "resetPasswordFromUserProfile()">Reset Password</button>
 </div>
 <div class = "button-container">
     <button class = "logOutButton" (click) = "logOut()" routerLinkActive="active">
