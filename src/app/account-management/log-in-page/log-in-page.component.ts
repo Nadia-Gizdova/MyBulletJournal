@@ -78,6 +78,6 @@ export class LogInPageComponent implements OnInit {
       .catch(e => 
         (<HTMLElement>document.getElementById('resetPasswordErrorText')).textContent = e + ". An error occurred while attempting to reset your password");  
     }
-      }
+  }
 
 }

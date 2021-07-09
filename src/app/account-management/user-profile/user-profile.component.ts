@@ -71,7 +71,13 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-
+  resetPasswordFromUserProfile() {
+    this.authService.resetPassword(this.email) 
+    .then(
+      () => (<HTMLElement>document.getElementById('pswdResetErrorText')).textContent = "A password reset link has been sent to your email address")
+    .catch(e => 
+      (<HTMLElement>document.getElementById('pswdResetErrorText')).textContent = e + ". An error occurred while attempting to reset your password");  
+  }
 
   logOut() {
     console.log("LOGGING OUT")

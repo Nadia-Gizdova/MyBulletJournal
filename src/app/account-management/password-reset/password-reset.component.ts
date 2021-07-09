@@ -98,6 +98,7 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
     }).catch(e => {
       // Error occurred during confirmation. The code might have expired or the password is too weak.
       alert(e);
+      this.router.navigate(['/log-in']);
     });
   }
 
