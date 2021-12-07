@@ -9,6 +9,24 @@
 </div> -->
 <p id = "pswdResetErrorText"></p>
 <div class = "userInfoContainer">
+
+    <div id = "userNameContainer" class = "container">
+        <div *ngIf = "isEditable">
+            <div id = "userNameLabelContainer" class = "labelContainer">
+                <p class = 'label'>User Name: </p>
+                <div class = "inputContainer">
+                    <input class = 'inputValue'[(ngModel)] = "userName">
+                </div>
+            </div>
+        </div>
+        <div *ngIf = "!isEditable">
+            <div id = "userNameLabelContainer" class = "labelContainer">
+                <p class = 'label'>User Name: </p>
+                <p class = 'value'>{{userName}}</p>
+            </div>
+        </div>
+    </div>
+
     <div id = "firstNameContainer" class = "container">
         <div *ngIf = "isEditable">
             <div id = "firstNameLabelContainer" class = "labelContainer">
@@ -31,7 +49,7 @@
             <div id = "lastNameLabelContainer" class = "labelContainer">
                 <p class = 'label'>Last Name: </p>
                 <div class = "inputContainer">
-                    <input class = 'inputValue'[(ngModel)] = "lastName">
+                    <input id = "lastName" class = 'inputValue'[(ngModel)] = "lastName">
                 </div>
             </div>
         </div>
@@ -50,31 +68,20 @@
             <p class = 'value'>{{email}}</p>
         </div>
     </div>
-
-
-    <div id = "userNameContainer" class = "container">
-        <div *ngIf = "isEditable">
-            <div id = "userNameLabelContainer" class = "labelContainer">
-                <p class = 'label'>User Name: </p>
-                <div class = "inputContainer">
-                    <input class = 'inputValue'[(ngModel)] = "userName">
-                </div>
-            </div>
-        </div>
-        <div *ngIf = "!isEditable">
-            <div id = "userNameLabelContainer" class = "labelContainer">
-                <p class = 'label'>User Name: </p>
-                <p class = 'value'>{{userName}}</p>
-            </div>
-        </div>
+</div>
+<div class = "resetContainer">
+    <div *ngIf = "isEditable" class = "resetPasswordButtonContainer">
+        <button class = "resetPasswordButton" id = "reset-pswd-button" (click) = "resetPasswordFromUserProfile()">Reset Password</button>
     </div>
+    <!-- <div *ngIf = "isEditable" class = "verticalDivider"></div>
+    <div *ngIf = "isEditable" class = "resetEmailButtonContainer">
+        <button class = "resetEmailButton" id = "reset-email-button" (click) = "resetEmail()">Reset Email</button>
+    </div> -->
 </div>
-<div *ngIf = "isEditable" class = "resetPasswordButtonContainer">
-    <button class = "resetPasswordButton" id = "reset-pswd-button" (click) = "resetPasswordFromUserProfile()">Reset Password</button>
-</div>
+
 <div class = "button-container">
     <button class = "logOutButton" (click) = "logOut()" routerLinkActive="active">
-        <div class = "lotOutButtonTextContainer">
+        <div class = "logOutButtonTextContainer">
             <p class = "button-text">Log Out</p>
         </div>
     </button>

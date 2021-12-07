@@ -26,6 +26,7 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
   oldPassword: string;
   newPassword = "";
   confirmPassword = "";
+  resetSuccessMessageText = "";
   // The user management action to be completed
   mode: any;
   // Just a code Firebase uses to prove that this is a real password reset.
@@ -83,7 +84,8 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
 
   handleResetPassword() { 
     if (this.newPassword != this.confirmPassword) {
-      alert('New Password and Confirm Password do not match');
+      // alert('New Password and Confirm Password do not match');
+      this.errorMessage = "New Password and Confirm Password do no match";
       return;
     }
     // Save the new password.
@@ -93,8 +95,11 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
     )
     .then(resp => {
       // Password reset has been confirmed and new password updated.
-      alert('New password has been saved');
-      this.router.navigate(['/log-in']);
+      // alert('New password has been saved');
+      this.resetSuccessMessageText = "New password has been saved";
+      setTimeout(() => {
+        this.router.navigate(['/log-in']);
+      }, 3000); 
     }).catch(e => {
       // Error occurred during confirmation. The code might have expired or the password is too weak.
       alert(e);

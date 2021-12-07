@@ -24,11 +24,11 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.afAuth.authState.subscribe( user => {
       if (user) { 
-        console.log("We have a user")
+        console.log("Home Page - We have a user")
         this.userID = user.uid;
-        console.log("MY USER ID: " + this.userID);
+        console.log("Home Page - MY USER ID: " + this.userID);
         this.email = user.email;
-        console.log("MY EMAIL: " + this.email);
+        console.log("Home Page - MY EMAIL: " + this.email);
         
       }
     });

@@ -28,9 +28,9 @@ export class UserProfileComponent implements OnInit {
     this.afAuth.authState.subscribe( user => {
       if (user) { 
         this.userID = user.uid 
-        console.log("User UID: " + this.userID);
+        console.log("(On Init) User Profile - User UID: " + this.userID);
         this.email = user.email;
-        console.log("User Email: " + this.email);
+        console.log("(On Init) User Profile - User Email: " + this.email);
         this.fbOps.getUsersList().snapshotChanges().subscribe(res => {
           this.allUsers.length = 0;
           res.forEach(u => {
@@ -49,14 +49,15 @@ export class UserProfileComponent implements OnInit {
               
             }
           })
-          console.log("Users fetched succesfully. All Users: ");
-          console.log("First name: " + this.firstName);
-          console.log("Last name: " + this.lastName);
-          console.log("Email: " + this.email);
-          console.log("User name: " + this.userName);
+          console.log("(On Init) User Profile - Users fetched succesfully. All Users: ");
+          console.log("(On Init) First name: " + this.firstName);
+          console.log("(On Init) Last name: " + this.lastName);
+          console.log("(On Init) Email: " + this.email);
+          console.log("(On Init) User name: " + this.userName);
+          console.log("(On Init) currentUserId: "+ this.authService.currentUserId);
           console.log(this.allUsers)
         }, err => {
-          console.log("Users could not be fetched");
+          console.log("(On Init) User Profile - Users could not be fetched");
         });
       }
     });
@@ -66,19 +67,38 @@ export class UserProfileComponent implements OnInit {
     this.isEditable = !this.isEditable;
     if(this.isEditable){
       (<HTMLElement>document.getElementById("edit-button")).textContent = "Save Changes";
+      this.printVars()
     } else {
       (<HTMLElement>document.getElementById("edit-button")).textContent = "Edit Account";
+      // this.printVars()
+      this.saveChangesToAccount()
       this.clearText()
     }
   }
 
+  printVars() {
+    console.log("(Print Vars) User Profile - User name: " + this.userName);
+    console.log("(Print Vars) User Profile - First name: " + this.firstName)
+    console.log("(Print Vars) User Profile - Last name: " + this.lastName)
+    console.log("(Print Vars) User Profile - Email: " + this.email);
+    console.log("(Print Vars) User Profile - User ID: " + this.userID);
+  }
+
+  saveChangesToAccount() {
+    console.log("User Profile - SAVING CHANGES TO ACCOUNT!")
+    this.printVars()
+    this.fbOps.updateUser(this.userID, this.userName, this.firstName, this.lastName);
+  }
+
   resetPasswordFromUserProfile() {
+    console.log("Resetting password from user profile");
     this.authService.resetPassword(this.email) 
     .then(
       () => (<HTMLElement>document.getElementById('pswdResetErrorText')).textContent = "A password reset link has been sent to your email address")
     .catch(e => 
       (<HTMLElement>document.getElementById('pswdResetErrorText')).textContent = e + ". An error occurred while attempting to reset your password");  
   }
+
 
   logOut() {
     console.log("LOGGING OUT")
