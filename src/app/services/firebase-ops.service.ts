@@ -3,14 +3,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { Goals } from '../yearly-goals/goals';
-
-export interface User {
-  firstName: string;
-  lastName: string;
-  email: string;
-  username: string;
-}
-
+import { User } from '../account-management/user-profile/user';
 
 
 @Injectable({

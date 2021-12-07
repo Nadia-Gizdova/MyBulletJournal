@@ -2,8 +2,9 @@ import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../services/auth.service';
-import { FirebaseOpsService, User } from '../services/firebase-ops.service';
+import { FirebaseOpsService } from '../services/firebase-ops.service';
 import { Goals } from './goals';
+import { User } from '../account-management/user-profile/user';
 
 @Component({
   selector: 'app-yearly-goals',

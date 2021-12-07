@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service'
 import { Router } from '@angular/router';
-import { FirebaseOpsService, User } from 'src/app/services/firebase-ops.service';
+import { FirebaseOpsService } from 'src/app/services/firebase-ops.service';
 import { Observable } from 'rxjs';
+import { User } from '../user-profile/user';
 
 @Component({
   selector: 'app-create-account',

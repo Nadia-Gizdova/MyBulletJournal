@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { FirebaseOpsService, User } from 'src/app/services/firebase-ops.service';
+import { FirebaseOpsService } from 'src/app/services/firebase-ops.service';
 import { AuthService } from '../../services/auth.service';
+import { User } from './user';
 
 @Component({
   selector: 'app-user-profile',
