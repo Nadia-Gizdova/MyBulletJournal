@@ -14,13 +14,13 @@ import { User } from '../account-management/user-profile/user';
 export class YearlyGoalsComponent implements OnInit {
 
   allUsers: User[] = [];
-  myGoalsList: Goals[] = [];
+  myGoalsList: Goals[] = []; //from DB
+  // myGoalsList: Goals; //from DB
+  savedGoalsList: string[] = [];
 
   userID = '';
-  firstName = '';
-  lastName = '';
   email = '';
-  userName = "";
+
   
 
   constructor(private authService: AuthService, private fbOpsService: FirebaseOpsService,private afAuth: AngularFireAuth) { }
@@ -31,17 +31,23 @@ export class YearlyGoalsComponent implements OnInit {
         this.userID = user.uid 
         console.log("(On Init) Yearly Goals - Current User UID: " + this.userID);
         this.fbOpsService.getGoals(this.userID).snapshotChanges().subscribe(res => {
+          // this.myGoalsList.syncedGoals.length = 0;
           this.myGoalsList.length = 0;
+          this.savedGoalsList.length = 0;
           res.forEach(g => {
             const goals = g.payload.toJSON();
-            console.log(user['email']);
+            // this.myGoalsList.syncedGoals.push(goals as string);
             this.myGoalsList.push(goals as Goals);
+            this.savedGoalsList.push(goals as string);
             if(user['email'] == this.email) {
-              this.myGoalsList = user["goals"];              
+              // this.myGoalsList.syncedGoals = goals["goals"];
+              this.myGoalsList = goals["goals"];                 
             }
           })
-          console.log("My Goals:")
+          console.log("On Init - My Goals:")
           console.log(this.myGoalsList);
+          console.log("On Init - Saved Goals:")
+          console.log(this.savedGoalsList);
         }, err => {
           console.log("(On Init) User Profile - Goals could not be fetched");
         });
@@ -50,25 +56,21 @@ export class YearlyGoalsComponent implements OnInit {
   }
 
   saveGoal() {
-    var ul = document.getElementById("goals-list");
-    var items = ul.getElementsByTagName("li");
-    var savedGoalsList;
-    for (var i = 0; i < items.length; ++i) {
-      //console.log(items[i].textContent);
-      var newLiElement = document.createElement('li');
-      newLiElement.style.fontFamily = "myBodyFont";
-      newLiElement.style.fontSize = "1.5vw";
-      if (items[i].textContent != "" && items[i].textContent != null) {
-        newLiElement.textContent = items[i].textContent;
-        document.getElementById("saved-goals-list").appendChild(newLiElement);
-        // goalsList.push(items[i].textContent);
+    var pendingGoalsList = document.getElementById("goals-list").getElementsByTagName("li");
+    for (var i = 0; i < pendingGoalsList.length; ++i) {
+      // var newLiElement = document.createElement('li');
+      // newLiElement.style.fontFamily = "myBodyFont";
+      // newLiElement.style.fontSize = "1.5vw";
+
+      if (pendingGoalsList[i].textContent != "" && pendingGoalsList[i].textContent != null) {
+        this.savedGoalsList.push(pendingGoalsList[i].textContent);
+        // console.log("pendingGoalsList[i]: ")
       }
     }
-    // goalsList = document.getElementById("saved-goals-list").getElementsByTagName("li");
-    // console.log(goalsList);
-    savedGoalsList = document.getElementById("saved-goals-list").innerText;
-    var dummyDataList = ["test", "test2", "hi"];
-    this.fbOpsService.updateGoals(this.userID, dummyDataList);
+    console.log("Saved my goals - Updated Goals List:");
+    console.log(this.savedGoalsList);
+
+    this.fbOpsService.updateGoals(this.userID, this.savedGoalsList);
     this.removeGoals();
   }
 

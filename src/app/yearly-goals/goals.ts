@@ -1,3 +1,3 @@
 export interface Goals {
-    goals: string[];
+    // syncedGoals: string[];
 }

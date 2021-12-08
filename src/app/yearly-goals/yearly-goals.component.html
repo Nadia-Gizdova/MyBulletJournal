@@ -15,7 +15,9 @@
     <p class = "my-goals-are">my goals for the year are...</p>
 </div>
 <div class = "saved-goals">
-    <ul id = "saved-goals-list"></ul>
+    <ul id = "saved-goals-list">
+        <li *ngFor="let goal of myGoalsList" style="font-size: 1.5vw; font-family: 'myBodyFont';">{{goal}}</li>
+    </ul>
 </div>
 <div class = "goals-container">
     <section id="textarea" contenteditable="true">
