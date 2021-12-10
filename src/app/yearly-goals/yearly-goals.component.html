@@ -8,17 +8,63 @@
     </div>
     <div class= "grid-item" id = "empty-container2"></div>
 </div>
-<div class = "first-line">
+<div class = "container" id = "first-line">
     <!-- <div class = "icon-container">
         <mat-icon>fiber_manual_record</mat-icon>
     </div> -->
-    <p class = "my-goals-are">my goals for the year are...</p>
+    <div class = "column" id = "myGoalsPrompt">
+        <p class = "my-goals-are">my goals for the year are...</p>
+    </div>
+    <div class = "container" id = "cancelAndEditColumn">
+        <div class = "column">
+            <div *ngIf = "isEditable" class = "cancelButtonContainer">
+                <button class = "cancelButton" (click) = "cancelChanges()">Cancel</button>
+            </div>
+        </div>
+        <div class = "column">
+            <div class = "editGoalsButtonContainer">
+                <button class = "editGoalsButton" id = "edit-button" (click) = "editGoals()">Edit Goals</button>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- <div class = "statusContainer">
+    <p id = "status">{{status}}</p>
+</div> -->
+
 <div class = "saved-goals">
-    <ul id = "saved-goals-list">
-        <li *ngFor="let goal of myGoalsList" style="font-size: 1.5vw; font-family: 'myBodyFont';">{{goal}}</li>
-    </ul>
+    <div *ngIf = "!isEditable">
+        <ul id = "saved-goals-list">
+            <li *ngFor="let goal of myGoalsList" style="font-size: 1.5vw; font-family: 'myBodyFont';">{{goal}}</li>
+        </ul>
+    </div>
+    <div *ngIf = "isEditable">
+        <ul id = "saved-goals-list" style = "margin-left: -4%;">
+            <div *ngFor="let goal of myGoalsList; let index = index; trackBy:trackByIndex;" id = {{index}} style="font-size: 1.5vw; font-family: 'myBodyFont';">
+                <div class = "inputAndDeleteContainer">
+                    <input class = "inputBox" [(ngModel)] = "myGoalsList[index]">
+                    <mat-icon id = "delete-icon" (click) = "deleteGoal(goal, index)">delete</mat-icon>
+                    <!-- <div class = "iconContainer"> -->
+                    <!-- <mat-icon id = "delete-icon">delete</mat-icon> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+        </ul>
+    </div>
 </div>
+    <!-- <div *ngIf = "isEditable">
+        <ul id = "saved-goals-list">
+            <li *ngFor="let goal of myGoalsList" style="font-size: 1.5vw; font-family: 'myBodyFont';">
+                <div *ngIf = "!editing">
+                    {{goal}}<mat-icon id = "edit-icon" (click)="editGoal(goal)">edit</mat-icon>
+                </div>
+                <div *ngIf = "editing">
+                    <input><mat-icon id = "check-icon" (click) = "saveGoal(goal)">check</mat-icon>
+                </div>
+            </li>
+        </ul>
+    </div> -->
+
 <div class = "goals-container">
     <section id="textarea" contenteditable="true">
         <ul id = "goals-list">
@@ -31,9 +77,8 @@
                 <mat-icon>add</mat-icon>
             </div> -->
             <div class = "button-text-container">
-                <p class = "save-goal-button-text" (click) = "saveGoal()">Save Goal</p>
+                <p class = "save-goal-button-text" (click) = "saveGoals()">Save Goals</p>
             </div>
         </button>
     </div>
-    <!-- <textarea class = "goal-textbox"></textarea> -->
 </div>

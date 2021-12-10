@@ -21,7 +21,9 @@ export class YearlyGoalsComponent implements OnInit {
   userID = '';
   email = '';
 
-  
+  isEditable: boolean = false; 
+  status = "";
+  // editing: boolean = false;
 
   constructor(private authService: AuthService, private fbOpsService: FirebaseOpsService,private afAuth: AngularFireAuth) { }
 
@@ -44,10 +46,10 @@ export class YearlyGoalsComponent implements OnInit {
               this.myGoalsList = goals["goals"];                 
             }
           })
-          console.log("On Init - My Goals:")
-          console.log(this.myGoalsList);
-          console.log("On Init - Saved Goals:")
-          console.log(this.savedGoalsList);
+          // console.log("On Init - My Goals:")
+          // console.log(this.myGoalsList);
+          // console.log("On Init - Saved Goals:")
+          // console.log(this.savedGoalsList);
         }, err => {
           console.log("(On Init) User Profile - Goals could not be fetched");
         });
@@ -55,7 +57,7 @@ export class YearlyGoalsComponent implements OnInit {
     });
   }
 
-  saveGoal() {
+  saveGoals() {
     var pendingGoalsList = document.getElementById("goals-list").getElementsByTagName("li");
     for (var i = 0; i < pendingGoalsList.length; ++i) {
       // var newLiElement = document.createElement('li');
@@ -71,10 +73,10 @@ export class YearlyGoalsComponent implements OnInit {
     console.log(this.savedGoalsList);
 
     this.fbOpsService.updateGoals(this.userID, this.savedGoalsList);
-    this.removeGoals();
+    this.pushGoals();
   }
 
-  removeGoals() {
+  pushGoals() {
     var ul = document.getElementById("goals-list");
     var items = ul.getElementsByTagName("li");
     var itemsLength = items.length;
@@ -88,21 +90,44 @@ export class YearlyGoalsComponent implements OnInit {
     ul.appendChild(newLiElement);
   }
 
-  // addGoal() {
-  //   var saveGoalButtonDiv = document.createElement('div');
-  //   saveGoalButtonDiv.className = 'save-goal-button-div';
-  //   saveGoalButtonDiv.id = 'save-goal-button-div-id';
-  //   saveGoalButtonDiv.innerHTML = "<button style = 'display: flex; flex-direction: row; padding-left: 15px; padding-right: 15px; margin-bottom: 10px; font-family: h1Bold; font-size: 2vw; border-radius: 20px; outline: none; background-color: white; align-self: center; cursor: pointer; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);'>Save Goal</button>";
-  //   document.getElementById("goals-container").appendChild(saveGoalButtonDiv);
-  //   document.getElementById("save-goal-button-div-id").style.display = 'flex';
-  //   document.getElementById("save-goal-button-div-id").style.justifyContent = 'flex-end';
-  //   document.getElementById("save-goal-button-div-id").style.marginRight = '10%';
-  //   document.getElementById("save-goal-button-div-id").style.marginBottom = '10px';
-    
-  //   var newGoalTextBoxDiv = document.createElement('div');
-  //   newGoalTextBoxDiv.className = 'goal-textbox-div';
-  //   newGoalTextBoxDiv.innerHTML = "<textarea style = 'width: 88.5%; resize: vertical; font-family: myBodyFont; font-size: 23px; margin-bottom: 30px; border-radius: 15px; border-color: lightgrey; height: 200px; overflow: scroll; outline: none; padding: 10px; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);'>";
-  //   document.getElementById("goals-container").appendChild(newGoalTextBoxDiv);
-  // }
+  editGoals() {
+    this.isEditable = !this.isEditable;
+    if(this.isEditable){
+      (<HTMLElement>document.getElementById("edit-button")).textContent = "Update Goals";
+    } else {
+      (<HTMLElement>document.getElementById("edit-button")).textContent = "Edit Goals";
+      console.log("My Goals List after update: ")
+      console.log(this.myGoalsList)
+      this.updateGoalsToAccount(this.myGoalsList)
+    }
 
+  }
+
+  updateGoalsToAccount(list) {
+    console.log("Yearly Goals - SAVING GOALS TO ACCOUNT!")
+    this.fbOpsService.updateGoals(this.userID, list);
+    // this.status = "Goals were successfully updated!"
+  }
+
+  trackByIndex(index: number, obj: any) {
+    return index;
+  }
+
+  deleteGoal(goal, index) {
+    console.log("Deleting goal: '" + goal + "' with index: " + index);
+    // var inputElement = document.getElementById(index);
+    // inputElement.parentElement.removeChild(inputElement);
+    this.myGoalsList.splice(index,1);
+    console.log("My new goals list after removal of goal: " + goal + " at index: " + index + " =");
+    console.log(this.myGoalsList);
+    // this.updateGoalsToAccount(this.myGoalsList)
+  }
+
+  cancelChanges() {
+    console.log("Saved Goals List (original copy): ")
+    console.log(this.savedGoalsList)
+    this.isEditable = false;
+    this.fbOpsService.updateGoals(this.userID, this.savedGoalsList);
+    this.ngOnInit();
+  }
 }

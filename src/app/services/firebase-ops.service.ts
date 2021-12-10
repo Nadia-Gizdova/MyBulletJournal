@@ -60,7 +60,7 @@ export class FirebaseOpsService {
     this.afd.object('users/' + _userId).update({username: _userName, firstName: _firstName, lastName: _lastName});
   }
 
-  updateGoals(_userID: string, _goals: string[]) {
+  updateGoals(_userID: string, _goals: Goals[]) {
     console.log("FBOPS - UPDATING GOALS");
     this.afd.object('users/' + _userID).update({goals: _goals});
   }

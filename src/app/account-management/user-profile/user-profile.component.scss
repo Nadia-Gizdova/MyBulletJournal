@@ -7,20 +7,23 @@
 }
 
 .labelContainer {
-    font-family: 'h1Bold';
-    font-weight: bold;
-    font-size: 30px;
+    // font-family: 'h1Bold';
+    // font-weight: bold;
+    // font-size: 3vw;
     display: flex;
     flex-direction: row;
 }
 
 .label {
+    font-family: 'h1Bold';
     margin-right: 10px;
+    font-size: 3vw;
+    font-weight: bold;
 }
 
 .value {
     font-family: 'myBodyFont';
-    font-size: 20px;
+    font-size: 2vw;
     align-self: center;
     padding-top: 5px;
 }
@@ -62,13 +65,14 @@ p {
 .myAccountTextContainer {
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 .myAccountTextContainer p{
     text-align: center;
     font-family: "h1Bold";
     font-weight: bold;
-    font-size: 60px;
+    font-size: 5vw;
     background-image: url(/assets/highlighterStroke.png);
     background-repeat: no-repeat;
     width: 20%;
@@ -85,7 +89,7 @@ p {
 .editAccountButton {
     cursor: pointer;
     font-family: "h1Bold";
-    font-size: 20px;
+    font-size: 2vw;
     border: none;
     background: none;
     color: blue;
