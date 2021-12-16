@@ -60,14 +60,21 @@ export class FirebaseOpsService {
     this.afd.object('users/' + _userId).update({username: _userName, firstName: _firstName, lastName: _lastName});
   }
 
-  updateGoals(_userID: string, _goals: Goals[]) {
+  updateGoals(_userID: string, _goals: Goals[], _year: number) {
     console.log("FBOPS - UPDATING GOALS");
-    this.afd.object('users/' + _userID).update({goals: _goals});
+    const currentYear = new Date();
+    // this.afd.object('users/' + _userID + "/year: " + currentYear.getFullYear()).update({goals: _goals});
+    this.afd.object('users/' + _userID + "/year/" + _year).update({goals: _goals});
+    // const currentYear = new Date();
+    // this.afd.object('users/' +  _userID + "/goals").update({year: currentYear.getFullYear()});
   }
 
-  getGoals(_userID: string): AngularFireList<Goals> {
-    console.log("FBOPS - GETTING GOALS");
-    var goalsRef = this.afd.list('users/' + _userID + '/goals') as AngularFireList<Goals>
+  getGoals(_userID: string, _year): AngularFireList<Goals> {
+    console.log("FBOPS - GETTING GOALS FOR YEAR: " + _year);
+    // var goalsRef = this.afd.list('users/' + _userID + '/goals') as AngularFireList<Goals>
+    // const currentYear = new Date();
+    // var goalsRef = this.afd.list('users/' + _userID + "/year: " + currentYear.getFullYear() + '/goals') as AngularFireList<Goals>
+    var goalsRef = this.afd.list('users/' + _userID + "/year/" + _year + '/goals') as AngularFireList<Goals>
     return goalsRef;
   }
 

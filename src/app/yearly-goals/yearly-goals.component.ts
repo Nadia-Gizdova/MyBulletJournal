@@ -1,5 +1,5 @@
 import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵsetCurrentInjector } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../services/auth.service';
 import { FirebaseOpsService } from '../services/firebase-ops.service';
@@ -12,6 +12,10 @@ import { User } from '../account-management/user-profile/user';
   styleUrls: ['./yearly-goals.component.scss']
 })
 export class YearlyGoalsComponent implements OnInit {
+
+  currentDate = new Date();
+  displayYear = this.currentDate.getFullYear();
+  
 
   allUsers: User[] = [];
   myGoalsList: Goals[] = []; //from DB
@@ -27,12 +31,13 @@ export class YearlyGoalsComponent implements OnInit {
 
   constructor(private authService: AuthService, private fbOpsService: FirebaseOpsService,private afAuth: AngularFireAuth) { }
 
+
   ngOnInit(): void {
     this.afAuth.authState.subscribe( user => {
       if (user) { 
         this.userID = user.uid 
         console.log("(On Init) Yearly Goals - Current User UID: " + this.userID);
-        this.fbOpsService.getGoals(this.userID).snapshotChanges().subscribe(res => {
+        this.fbOpsService.getGoals(this.userID, this.displayYear).snapshotChanges().subscribe(res => {
           // this.myGoalsList.syncedGoals.length = 0;
           this.myGoalsList.length = 0;
           this.savedGoalsList.length = 0;
@@ -57,6 +62,33 @@ export class YearlyGoalsComponent implements OnInit {
     });
   }
 
+  //TODO: Implement functionality to reset goals after new year and to be able to go back and forth between years to pull
+  //data from previous years.
+
+  decreaseYear() {
+    this.displayYear--;
+    console.log("User ID: " + this.userID + ", Display Year: " + this.displayYear);
+    console.log("My Goals:");
+    console.log(this.myGoalsList);
+    this.fbOpsService.getGoals(this.userID, this.displayYear)
+    this.ngOnInit()
+  }
+
+  increaseYear() {
+    this.displayYear++;
+    console.log("User ID: " + this.userID + ", Display Year: " + this.displayYear);
+    // this.fbOpsService.getGoals(this.userID, this.displayYear)
+    this.fbOpsService.getGoals(this.userID, this.displayYear)
+    this.ngOnInit()
+  }
+
+  setCurrentYear() {
+    this.displayYear = this.currentDate.getFullYear();
+    console.log("User ID: " + this.userID + ", Display Year: " + this.displayYear);
+    this.fbOpsService.getGoals(this.userID, this.displayYear)
+  }
+  //-------
+
   saveGoals() {
     var pendingGoalsList = document.getElementById("goals-list").getElementsByTagName("li");
     for (var i = 0; i < pendingGoalsList.length; ++i) {
@@ -71,8 +103,8 @@ export class YearlyGoalsComponent implements OnInit {
     }
     console.log("Saved my goals - Updated Goals List:");
     console.log(this.savedGoalsList);
-
-    this.fbOpsService.updateGoals(this.userID, this.savedGoalsList);
+    console.log("Display YEAR: " + this.displayYear)
+    this.fbOpsService.updateGoals(this.userID, this.savedGoalsList, this.displayYear);
     this.pushGoals();
   }
 
@@ -105,7 +137,8 @@ export class YearlyGoalsComponent implements OnInit {
 
   updateGoalsToAccount(list) {
     console.log("Yearly Goals - SAVING GOALS TO ACCOUNT!")
-    this.fbOpsService.updateGoals(this.userID, list);
+    console.log("Display year: " + this.displayYear)
+    this.fbOpsService.updateGoals(this.userID, list, this.displayYear);
     // this.status = "Goals were successfully updated!"
   }
 
@@ -127,7 +160,7 @@ export class YearlyGoalsComponent implements OnInit {
     console.log("Saved Goals List (original copy): ")
     console.log(this.savedGoalsList)
     this.isEditable = false;
-    this.fbOpsService.updateGoals(this.userID, this.savedGoalsList);
+    this.fbOpsService.updateGoals(this.userID, this.savedGoalsList, this.displayYear);
     this.ngOnInit();
   }
 }

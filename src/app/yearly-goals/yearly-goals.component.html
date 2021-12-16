@@ -8,6 +8,14 @@
     </div>
     <div class= "grid-item" id = "empty-container2"></div>
 </div>
+<div class = "year-container">
+    <div class = "year-changer">
+        <button mat-button class = "previous-year" (click)="decreaseYear()"><mat-icon id = "previous">chevron_left</mat-icon></button>
+        <div class = "year-label">{{displayYear}}</div>
+        <button mat-button class = "next-year" (click)="increaseYear()"><mat-icon id = "next">chevron_right</mat-icon></button>
+    </div>
+    <button mat-button class = "thisYear" (click)="setCurrentYear()"><mat-icon>calendar_today</mat-icon>Jump to This Year</button>
+</div>
 <div class = "container" id = "first-line">
     <!-- <div class = "icon-container">
         <mat-icon>fiber_manual_record</mat-icon>
