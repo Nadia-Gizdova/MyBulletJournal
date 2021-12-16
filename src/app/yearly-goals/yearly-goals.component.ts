@@ -70,7 +70,7 @@ export class YearlyGoalsComponent implements OnInit {
     console.log("User ID: " + this.userID + ", Display Year: " + this.displayYear);
     console.log("My Goals:");
     console.log(this.myGoalsList);
-    this.fbOpsService.getGoals(this.userID, this.displayYear)
+    // this.fbOpsService.getGoals(this.userID, this.displayYear)
     this.ngOnInit()
   }
 
@@ -78,14 +78,14 @@ export class YearlyGoalsComponent implements OnInit {
     this.displayYear++;
     console.log("User ID: " + this.userID + ", Display Year: " + this.displayYear);
     // this.fbOpsService.getGoals(this.userID, this.displayYear)
-    this.fbOpsService.getGoals(this.userID, this.displayYear)
+    // this.fbOpsService.getGoals(this.userID, this.displayYear)
     this.ngOnInit()
   }
 
   setCurrentYear() {
     this.displayYear = this.currentDate.getFullYear();
     console.log("User ID: " + this.userID + ", Display Year: " + this.displayYear);
-    this.fbOpsService.getGoals(this.userID, this.displayYear)
+    // this.fbOpsService.getGoals(this.userID, this.displayYear)
     this.ngOnInit()
   }
   //-------
