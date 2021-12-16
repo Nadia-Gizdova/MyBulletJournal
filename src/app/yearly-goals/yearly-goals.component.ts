@@ -86,6 +86,7 @@ export class YearlyGoalsComponent implements OnInit {
     this.displayYear = this.currentDate.getFullYear();
     console.log("User ID: " + this.userID + ", Display Year: " + this.displayYear);
     this.fbOpsService.getGoals(this.userID, this.displayYear)
+    this.ngOnInit()
   }
   //-------
 
